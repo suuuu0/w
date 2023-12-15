@@ -25,24 +25,20 @@
 
 <body>
 
-  <?php
- 
-  
-
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
 
- 
-     require 'phpmailer/src/phpmailer.php';
-      require 'phpmailer/src/SMTP.php';
-      require 'phpmailer/src/Exception.php';
+    require 'phpmailer/src/phpmailer.php';
+    require 'phpmailer/src/SMTP.php';
+    require 'phpmailer/src/Exception.php';
 
-      $mail = new phpmailer\phpmailer\phpmailer(true);
+    $mail = new phpmailer\phpmailer\phpmailer(true);
 
-      try {
+    try {
         // Server settings
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
@@ -64,17 +60,12 @@
 
         $mail->send();
         echo 'Email sent successfully';
-      } catch (Exception $e) {
+    } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-      }
-    } else {
-      echo "Error: " . $sql->error;
     }
+}
+?>
 
-  
-
-  $conn->close();
-  ?>
 
   <div class="container">
     <div class="row">
