@@ -71,8 +71,7 @@
       echo "Error: " . $sql->error;
     }
 
-    $sql->close();
-  }
+  
 
   $conn->close();
   ?>
