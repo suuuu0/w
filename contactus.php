@@ -26,18 +26,8 @@
 <body>
 
   <?php
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "sec";
-
-  // Create connection
-  $conn = new mysqli($servername, $username, $password, $dbname);
-
-  // Check connection
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  }
+ 
+  
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
@@ -45,13 +35,8 @@
     $email = $_POST['email'];
     $message = $_POST['message'];
 
-    // Insert data into the database using prepared statements
-    $sql = $conn->prepare("INSERT INTO users (name, email) VALUES (?, ?)");
-    $sql->bind_param("ss", $name, $email);
-
-    if ($sql->execute()) {
-      // Send email
-      require 'phpmailer/src/phpmailer.php';
+ 
+     require 'phpmailer/src/phpmailer.php';
       require 'phpmailer/src/SMTP.php';
       require 'phpmailer/src/Exception.php';
 
